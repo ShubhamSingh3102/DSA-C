@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<malloc.h>
+struct node{
+    int data;
+    struct node* left;
+    struct node* right;
+};
+struct node* CreateNode(int data)
+{
+    struct node* n;//Creating a node pointer
+    n = (struct node *)malloc(sizeof(struct node));
+    n->data=data;
+    n->left=NULL;
+    n->right=NULL;
+    return n;
+}
+void InOrder(struct node* root)
+{
+    if(root!=NULL)
+    {
+        InOrder(root->left);
+        printf("%d ",root->data);
+        InOrder(root->right);
+    }
+}
+
+int isBST(struct node* root)
+{
+    static struct node* prev=NULL;
+    if(root!=NULL)
+    {
+        if(!isBST(root->left))
+        {
+            return 0;
+        }
+        if(prev!=NULL && root->data <=prev->data)
+        {
+            return 0;
+        }
+        prev=root;
+        return isBST(root->right);
+    }
+    else
+    {
+        return 1;
+    }
+}
+//Code for searching in Binary Search Tree
+
+struct node* Search(struct node* root,int key)
+{
+    if(root==NULL)
+    {
+        return NULL;
+    }
+    if(root->data==key)
+    {
+        return root;
+    }
+    else if(root->data>key)
+    {
+        return Search(root->left,key);
+    }
+    else
+    {
+        return Search(root->right,key);
+    }
+}
+int main()
+{
+    //Constructing the root node-Using function(Recommended)
+    struct node *p=CreateNode(5);
+    struct node *p1=CreateNode(3);
+    struct node *p2=CreateNode(6);
+    struct node *p3=CreateNode(1);
+    struct node *p4=CreateNode(4);
+    
+    //Linking the root node with left and right children
+    p->left=p1;
+    p->right=p2;
+    p1->left=p3;
+    p1->right=p4;
+
+    struct node* n=Search(p,4);//ek pointer uss node ko point krega...
+    if(n!=NULL)
+    {
+        printf("Found:%d",n->data);
+    }
+    else
+    {
+        printf("Element not found");
+    }
+    return 0;
+}
