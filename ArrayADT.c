@@ -4,7 +4,7 @@ struct myArray//abstract data type
 {
     int total_size;
     int used_size;
-    int *ptr;//heap me memory
+    int *ptr;//heap me memory hai.....
 };
 void createArray(struct myArray* a, int tSize, int uSize)
 {
