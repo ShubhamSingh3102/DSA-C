@@ -128,7 +128,7 @@ struct node* DeleteNode(struct node* root,int value)
     {
        root->right=DeleteNode(root->right,value);
     }
-    //Deeletion Stratergy when the node is found
+    //Deletion Stratergy when the node is found
     else
     {
         iPre=InOrderPredecessor(root);
