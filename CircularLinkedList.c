@@ -8,7 +8,7 @@ struct Node
 
 void LinkedListTraversal(struct Node* head)
 {
-    struct Node* ptr= head;//ek pointer banao jo ki head ko point kare...
+    struct Node* ptr= head;//ek pointer banao jo ki head ko point kare....
     // printf("Element is %d\n",ptr->data);//initial push given to ptr
     // ptr= ptr->next;
     // while(ptr!=head)
